@@ -1,0 +1,19 @@
+@API_HostAddress = http://localhost:5000
+
+GET {{API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{API_HostAddress}}/api/products/
+Accept: application/json
+
+###
+
+@ProductId = 2
+GET {{API_HostAddress}}/api/products/{{ProductId}}
+Accept: application/json
+
+###
+
+GET 
