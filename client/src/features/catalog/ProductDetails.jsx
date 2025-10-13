@@ -12,6 +12,9 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
+import agent from "../../app/api/agent";
+import NotFound from "../../app/errors/NotFound";
+import LoadingComponent from "../../app/layout/LoadingComponent";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -19,16 +22,21 @@ export default function ProductDetails() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/api/products/${id}`)
-      .then((response) => setProduct(response.data))
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false));
+    // axios
+    //   .get(`http://localhost:5000/api/products/${id}`)
+    //   .then((response) => setProduct(response.data))
+    //   .catch((error) => console.log(error))
+    //   .finally(() => setLoading(false));
+    id &&
+      agent.Catalog.details(parseInt(id))
+        .then((response) => setProduct(response))
+        .catch((error) => console.log(error))
+        .finally(() => setLoading(false));
   }, [id]);
 
-  if (loading) return <h3>loading...</h3>;
+  if (loading) return <LoadingComponent message={"Loading product..."} />;
 
-  if (!product) return <h3>Product not found!</h3>;
+  if (!product) return <NotFound />;
 
   return (
     <Grid container spacing={6}>

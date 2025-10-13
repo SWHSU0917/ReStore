@@ -16,4 +16,32 @@ Accept: application/json
 
 ###
 
-GET 
+// 404
+GET  {{API_HostAddress}}/api/Buggy/not-found/
+Accept: application/json
+
+###
+
+// 400
+GET  {{API_HostAddress}}/api/Buggy/bad-request/
+Accept: application/json
+
+###
+
+// 401
+GET  {{API_HostAddress}}/api/Buggy/unauthorized/
+Accept: application/json
+
+###
+
+// 400
+GET  {{API_HostAddress}}/api/Buggy/validation-error/
+Accept: application/json
+
+###
+
+// 500
+GET  {{API_HostAddress}}/api/Buggy/server-error/
+Accept: application/json
+
+###

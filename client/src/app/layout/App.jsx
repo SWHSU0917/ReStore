@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { ToastContainer } from "react-toastify";
 
 import Header from "./Header";
-import Catalog from "../../features/catalog/Catalog";
+
+import "react-toastify/dist/ReactToastify.css";
 
 import {
   Container,
@@ -30,6 +32,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <ToastContainer position="bottom-right" hideProgressBar theme="colored" />
       <CssBaseline />
       <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
       <Container>
