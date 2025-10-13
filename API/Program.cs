@@ -32,7 +32,8 @@ app.UseCors(opt =>
 {
     opt.WithOrigins("http://localhost:3000")
         .AllowAnyHeader()
-        .AllowAnyMethod();
+        .AllowAnyMethod()
+        .AllowCredentials();
 });
 
 app.UseAuthorization();

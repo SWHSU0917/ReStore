@@ -45,3 +45,24 @@ GET  {{API_HostAddress}}/api/Buggy/server-error/
 Accept: application/json
 
 ###
+
+GET {{API_HostAddress}}/api/Basket/
+Cookie: buyerId=2ffde21a-7a83-46c5-96d7-2140cba4b4cf
+Accept: application/json
+
+###
+
+@productId = 3
+@quantity = 3
+
+POST {{API_HostAddress}}/api/Basket?productId={{productId}}&quantity={{quantity}}
+Cookie: buyerId=2ffde21a-7a83-46c5-96d7-2140cba4b4cf
+Accept: application/json
+
+###£z
+
+DELETE {{API_HostAddress}}/api/Basket?productId={{productId}}&quantity={{quantity}}
+Cookie: buyerId=2ffde21a-7a83-46c5-96d7-2140cba4b4cf
+Accept: application/json
+
+###
