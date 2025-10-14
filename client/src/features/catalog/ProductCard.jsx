@@ -6,28 +6,27 @@ import {
   CardContent,
   CardHeader,
   CardMedia,
-  IconButton,
-  Tooltip,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import agent from "../../app/api/agent";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { useStoreContext } from "../../app/context/StoreContext";
 import { currencyFormat } from "../../app/util/util";
+import { addBasketItemAsync } from "../basket/basketSlice";
 
 export default function ProductCard({ product }) {
-  const [loading, setLoading] = useState(false);
-  const { setBasket } = useStoreContext();
+  // const [loading, setLoading] = useState(false);
+  const { status } = useSelector((state) => state.basket);
+  // const { setBasket } = useStoreContext();
+  const dispatch = useDispatch();
 
-  function handleAddItem(productId) {
-    setLoading(true);
-    agent.Basket.addItem(productId)
-      .then((basket) => setBasket(basket))
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false));
-  }
+  // function handleAddItem(productId) {
+  //   setLoading(true);
+  //   agent.Basket.addItem(productId)
+  //     // .then((basket) => setBasket(basket))
+  //     .then((basket) => dispatch(setBasket(basket)))
+  //     .catch((error) => console.log(error))
+  //     .finally(() => setLoading(false));
+  // }
 
   return (
     <Card>
@@ -62,9 +61,13 @@ export default function ProductCard({ product }) {
       </CardContent>
       <CardActions>
         <Button
-          loading={loading}
+          // loading={loading}
+          // onClick={() => handleAddItem(product.id)}
           size="small"
-          onClick={() => handleAddItem(product.id)}
+          loading={status.includes("pendingAddItem" + product.id)}
+          onClick={() =>
+            dispatch(addBasketItemAsync({ productId: product.id }))
+          }
         >
           Add to cart
         </Button>

@@ -27,3 +27,23 @@ export default defineConfig([
     },
   },
 ])
+
+// module.exports = {
+//   root: true,
+//   env: {browser: true, es2020: true},
+//   extends: [
+//     'eslint:recommended',
+//     'plugin:@javascript-eslint/recommended',
+//     'plugin:react-hooks/recommended',
+//   ],
+//   ignorePatterns: ['dist', 'eslint.config.js'],
+//   parser: '@javascript-eslint/parser',
+//   plugins: ['react-refresh'],
+//   rules: {
+//     '@javascript-eslint/no-explicit-any': ['off'],
+//     'react-refresh/only-export-components': [
+//       'warn',
+//       {allowContantExport: true},
+//     ]
+//   }
+// }

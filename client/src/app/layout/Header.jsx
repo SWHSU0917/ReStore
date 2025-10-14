@@ -10,9 +10,9 @@ import {
   Typography,
 } from "@mui/material";
 
-import { Link, NavLink } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { useStoreContext } from "../context/StoreContext";
+import { useSelector } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
 
 const midLinks = [
   { title: "catalog", path: "/catalog" },
@@ -38,7 +38,8 @@ const navStyles = {
 };
 
 export default function Header({ darkMode, handleThemeChange }) {
-  const { basket } = useStoreContext();
+  // const { basket } = useStoreContext();
+  const { basket } = useSelector((state) => state.basket);
   const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0);
 
   return (

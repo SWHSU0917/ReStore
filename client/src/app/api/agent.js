@@ -53,6 +53,7 @@ const request = {
 
 const Catalog = {
     list: () => request.get("products"),
+    // list: () => request.get("buggy/server-error"),
     details: (id) => request.get(`products/${id}`)
 }
 
@@ -67,7 +68,9 @@ const TestErrors = {
 const Basket = {
     get: () => request.get('basket'),
     addItem: (productId, quantity=1) => request.post(`basket?productId=${productId}&quantity=${quantity}`, {}),
+    // addItem: (productId, quantity=1) => request.post(`basket?productId=5525&quantity=${quantity}`, {}),
     removeItem: (productId, quantity=1) => request.delete(`basket?productId=${productId}&quantity=${quantity}`),
+    // removeItem: (productId, quantity=1) => request.delete(`basket?productId=5525&quantity=${quantity}`),
 }
 
 const agent = {
